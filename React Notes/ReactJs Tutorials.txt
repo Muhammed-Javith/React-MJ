@@ -1,0 +1,154 @@
+React Js and Redux Course:
+1.install vscode
+2.install nodejs
+	version check:
+	1.nodejs -> node -v
+	2.npm  -> npm -v
+		- node package manager
+		- dependency manager.
+3.Javascript online compiler:
+  https://onecompiler.com/javascript/3wyx24ssq
+- use the above for compiler and coding session
+
+React:
+
+- React is library that's used for creating user interfaces.
+-  its unique because everything is done with components.
+- imagine each component as a building block for your website and all of these
+  components, once you combine them together, makeup a complex component that builds up all of
+  the UI for your website.
+  (component + component -> main component) -  composition model.
+- Virtual DOM:
+	above components(c+c->mc) are all made up of elements.
+  these elements are what describe the UI of your web page.
+ 	- with our virtual DOM, react takes care of all of the hard work of 
+          converting the elements that you created to DOM  nodes which are passed
+	  to actual dom and render the appropriate UI on your web  page.
+Create react app:
+	why we using create-react-app for project setup and creation?
+		- normally working with reactor takes a lot of boiler plate configuration
+		  to get everything  up and running(after wrting react app)
+		  normally boiler plate configuration involves setting up babul and webpack.
+	  	- es6 supported browser are very less and browser support es5.
+		  but react code we written in es6 to run that code in browser babul will help us to 
+		  convert that code to es5(which required for browser).
+		  buble compile our es6 code into es5 bundle  which currently all major browsers are compatible with another tool.
+	webpack:
+		- generates all our code into bundle 
+	so all the above process done by create-react-app.
+create react app cmd: npm install -g create-react-app (now react features installed in our system)
+to create react project: create-react-app #prjname
+			or npx create-react-app my-app
+to start server: npm start
+	delete app.js
+	delete app.test.js
+	delete app.css
+	delete index.css
+	delete logo.svg
+	delete reportWebVitals.js
+	delete setupTests.js
+restart server and check.
+
+react intro elements:
+	open index.js and type the following:
+	import React from 'react'; //this will import react library and will give access to React variables.
+			     		before we make of this variable, its important to note that react makes use of elements to
+			    		describe the user interface of our application.
+			    		react elements are simply objects.
+			    		how do we create react elements to modify our user interface?
+	const element = React.createElement('h1',null,'Hello World');
+		 	- here to create elements we use createElement method with react variables.
+			  first parameter: html tag
+		          second parameter: props(now passing null as it is not needed now)
+			  thirs parameter: thing you want to display in UI.
+			  but how to display in UI?
+				react elements can only describe how the web page is going to look.
+				but actually renders our web page is the DOM
+	the process of describining what you want to render and actually rendering your elements 
+	completely decoupled.
+	for that we need to import react DoM
+	- import ReactDOM from 'react-dom';
+	to render our element:
+		ReactDOM.render(element,document.getElementById('root'));
+		-mostly used root element (check index.html)
+	- if react-dom is missed then "npm install react react-dom"
+
+react -jsx:
+	- jsx which is used to write html elements within it.
+component:
+	- component are the main building blocks of an application.
+	- they help us break down the UI into smaller, reusable  pieces.
+	- by combining all of the UI components into a single main component that's
+	  going to form all of the UI.(Compositional Model)
+ create component:
+	1.import component from react
+	2.class list{} 
+		- now to make above class as a component use render method.
+		class list extends component{}
+	3.after extending component class we can use all of its methods.
+	  one of them is render() method.
+		it typically returns react elements describing what should appear on the screen.
+	4.within this render write your code.
+- we can use single component multiple times.
+- within main component we can use list as many times.
+
+refactor:
+-create component folder
+- separate all component and work
+- to start npm start
+
+
+react state Management:
+
+App details:
+
+- Going to build photowall application with react fundamentals and navigation of component with react router.
+- you can add image and remove image with URL.
+- all code in class level components
+  to see functional component we will see PhotoWall.js file
+
+- if we want to add another photo or remove another photo then what will we do?
+	use states.
+  state represent data that can be changed over time and it's immutable.
+
+prop-types:
+>npm install --save prop-types@15.5.7
+
+Life Cycle Methods:
+ - The constructor method gets called once before our component instance is even mounted before it is even
+   inserted into the DOM.
+	- don't write any logic
+	- don't write any variable writing to it or triggering a change in our UI.
+
+- the render method should only be responsible for rendering UI based on the props or states that are passed into it.
+  ajax request or any asynchronous API request should be done after the component is mounted.
+  after it's inserted into the DOM and add it to the view.
+- componentdidmount is invoked immediately after the component is being inserted into the DOM.
+  the pattern is before the component is inserted into the DOM.
+  the constructor is invoked and initializes the component state with a post property of an empty array.
+  the render method would then get called passing in an empty array to map out the photos.
+  But obviously the array is empty, so it's not really mapping over anything.
+
+summary:
+ - constructor sets the initial state of our component with zero elements in the array.
+ - Render method is called No Picture show up since the array that we were mapping over is empty.
+ - the componentdidmount gets called right after the component instance was inserted to the dom.
+ - simulate api request to grab the photos from a database and updates the component state such that the post property of our state
+   is updated to the data that we just fetched.
+   since we updated the state, the render method gets called again and with the updated post property of our state it will rerender the UI.
+
+React Router:
+
+single page application: when you visit a single page app, it downloads the entire contents all at once in a single request.
+it doesn't refresh the page.
+
+to work on router run this command: npm install react-router-dom@4.2.2
+do the following in index.js file:
+
+import {BrowserRouter} from 'react-dom';
+ReactDOM.render(<BrowserRouter><Main/></BrowserRouter>, document.getElementById('root'));
+
+
+
+			   
+

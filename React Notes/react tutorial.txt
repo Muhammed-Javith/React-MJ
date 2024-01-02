@@ -1,0 +1,240 @@
+React:
+React - web application 
+	- fast in user interface
+react native - mobile application
+- spa ->single page application
+- a javascript library for building use interface.
+
+why react/react js is not called framework?
+	- in react we can only design/create user interface with the help of components.
+	  we cannot do routing, deploy full react app using react it is not possible.
+	for these we need to integrate other technologies. but angular do all the things and that's why angular is called framework.
+	so react library.
+why react?
+	- when send request we will get html file response server.
+	  with the help of that html file, browser construct to / convert to DOM.
+	- DOM
+	    - bridge between your code and user interface.
+	    - we can easily manipulate this.
+
+
+traditional website:
+browser sendd request to server
+web server send response as html response.
+when the above process is happening page is refreshing.
+
+React Js website:
+	browser sendd request to server
+	web server send response as (html+js) response.
+	- when we send request, we will get (html+js) response from server.
+	  this operation will happen at once.
+	  because if you again need another page, here there is no request will be sends.
+	  instead of that, the js within html(we got this first response) will send the request and get response.
+	- so the browser loading will not happen because this Js will ask reponse by request continously whenever needed.
+	- after build files, are compiled converted to pure js and made it as a single file.
+	- how it changed to single file?
+		- through the webpack app.
+		- that's why we get webpack compiled successfully.
+
+
+Creating react project:
+- creating react project in 2 ways:
+	1.using reactjs in html(static way)
+	2.using create reactapp
+1.static way:
+	create folder
+	create index.html
+		add the code 
+			<html>
+			<head>
+			<script>react@16/../react.production.min.js</script>
+			<react-dom.produciton.min.js>
+			<babel-standalone........>
+	here  babel.js why?
+		- browser doesn't supports in old browser.
+		- so babel convert this new js to old js code which is used in old versions of browsers.
+			....
+			<body>
+			<div id ="root"></div> //entry point of react.
+			<script>
+				//here we write the react related code.
+			   these codes should be taken by babel and make it then to supported in old browsers.
+			   so we will add type attribute in this script.
+			</script>
+			<script type = "text/babel">
+				class App extends React.component{
+					render(){
+						return <h1>hellow</h1>   //it's not  a text and html . this line of code is called jxs(javascript xml)
+					}
+			render is used to get data from react component.
+			ReactDom.render(<app/>, document.getelementbyid('root')); // to call the function
+			here reactdom is object.
+				<app/> class passed
+				document.getelementbyid('root')); -> to pass where we need to display
+2.create project using create reactapp:
+	above static method will helpful for smallerone.
+	but if code increased then above method will be problem like we need to refresh everytime.
+	- so we create react app for best use.
+- npx create-react-app #myprjname.
+- to start the server - npm start and opens on http://localhost:3000/
+
+project structure:
+1.node-modules -- contains all package.
+2.src/app.js - react related code is there.
+3.public/index.html- which contains "root id" and doesn't have any react node.
+	app.js -  fn() written and exported.
+	index.js - app component used here and imported here.
+		-  react module imported
+		- react dom module imported.
+		- root id used here.
+- add react developer tools in chrome.
+
+JSX - Javascript XML
+	- mixed code javascript xml
+	- this xml works with javascript
+	- using this we will create template codein react.
+	- if you write jsx elements also browser will display html code only.
+	- if you don't want to use jsx in react, then instead of jsx you need to use "create element" method.
+with jsx:
+	const heading = <h1 className = "site-handling">hello, React </h1>
+without jsx:
+	const heading = React.createElement('h1',{className:'site-heading'},
+			'Hello React');
+without jsx following order will be followed:
+1.parent element -h1
+2.element properties - className
+3.child element
+
+html vs jsx
+html -jsx
+class - className
+onclick - onclick(camelcase)(all event)
+<img> - <img/>   //self closing tag
+
+component:
+1.class component - contains class
+	- created by using class
+	- it will contain render() method
+	- it will return one template.(jsx syntax and only one parent elements)
+	- avoid code repitition/multiple usages.
+2.simple/function component - contains function
+	- functional component.
+	class component - stateful 
+	functional component - stateless
+
+
+
+Props:
+ - to hardcore the data dynamically
+ - above program statically hard-coded data used not dynamically data used.
+ - one component should use the data for dynamic approach.
+ - in react, if we went to use data, we need us properties in component is called "Props".
+- def:
+	props are used to pass data from a parent component to a child component in react.
+ex:
+in app.js
+	class App extends component{
+	render(){
+		const characters = [{
+			name:'charlie',
+			job:'jeni'},{}]
+	- to send the data to another component we will use props here.
+	<div.....>
+		<table characterData = { character } /> //data shared to table.
+- go and see the devtools and we able to see the entries.
+ but that is  not displayed in window.
+we didn't give the details about the data in dom then how the plugin shows this kind of details?
+	- in browser dom you will see the final output displayed by react.
+	  before show this, react have a  seperate dom that is virtual DOM.
+Virtual DOM:
+	- this dom contains the details of data.
+	- invisible dom which react had.
+	- user interfaces created fastly by this dom by reacts.
+-if element going to remove then their child element also going to remove(this calculation done by virtual DOM) - rerender
+ after re-render it will give it Browser DOM
+- so browser no need to do any calculation and so it got information about what to do from virtual DOM then removed and
+  this make browser dom work faster.
+- due to virtual dom (half of work done by this) in react render will happened faster.
+  now data sent to table component.
+  table.js:
+	...
+	render(){
+		this.props.characters Data;}
+	props: It is object within render like this we need to get data or using destructing assignment.
+		const { name, title} = obj;
+states:
+-def:
+	react has another special built-in object called state, which allows components to create and manage their own data.
+	so unlike props, components cannot pass data with state, but they can create and manage it internally.
+	- state is what allows you to create components that are dynamic and intractive.
+	- state implemented in class based component.
+- to change anything in user interface component using states.
+- using states we can modifyvgt/behaviour of data but props only sent data.
+- state -- changed based on user intraction.
+        -- use state:
+		within class component we couldn't use this.
+		doesn't used/couldn't used within condition.
+
+Difference between props and states:
+- components received data from outside with props, whereas create and manage their own data with state.
+  props are used to pass data, whereas state is for managing data.
+  data from props is readonly and cannot be modified by a component that is receiving it from outside.
+  state data can be modified by its own component, but is private(cannot be accessed from outside).
+- props can only be passedfrom parent component to child(unidirectional flow)
+- modifying state should happen with the setstate() method.
+
+React LifeCycle:
+constructor render(component didmount) -> render(component didupdate) ->component will unmount
+child(mount phase) -> adult(updating phase) -> senior (unmount phase)
+-Mounting(child)
+	- like birth of child
+	- at this phase the component is created.
+	-(your code, react's internal,)then inserted into dom.
+-Updating(adult)
+	- like humans 'grow'
+	- in this phase a react component undergoes growth by being updated via changes in props or states.
+-unMounting(Senior)
+	- like death of human
+	- this is the phase component removed from DOM.
+why react in first is performance?
+	- once component work is clone then that is removed from DOM.
+	- component willMount - unsafe and depreceated.
+	  component DidMount - currently in use.
+- after render only component is mounted.
+Hooks:
+- hooks are new addition in react 16.8
+  they let you use state and other react features without writing a class.
+	- hooks solves the problem of code reuse across components.
+	  they are written without classes.
+ 	  this doesn't mean that react is getting rid of classes, but hooks is just an alternative approach.
+	- in react hooks we can manage state using uses state in function based.
+		const[count,setcount] = usestate();
+			count - initial state
+			setcount - function
+
+UseRef Hook:
+	- to do focus shift
+	-  when you click this button it changed to green but it's still green.
+	   once you click , it needs to be back to its initial position.
+	- to do this here we need to 'useref' hook.
+
+useeffect:
+	- to manage component lifecycle.
+
+react router- v16:
+ npm install react-router-dom--save
+ 
+getting api data: using fetch(url) data
+
+building react app:
+to start development server: npm start
+to create product build: npm run build
+to install serve package: npm install -g serve
+to run this server: serve -s build
+
+
+
+				
+
+
+

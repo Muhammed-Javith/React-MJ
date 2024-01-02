@@ -1,0 +1,68 @@
+Redux:
+- react is an open source library written in Javascript that isn't
+  limited with react but well with it and allows us to better manage our application state.
+why redux?
+they both aim to solve the same problem managing your state.
+then why use redux over react?
+   - predictablility:
+	- the whole point of redux is to make the state of your application more predictable.
+	- as your application becomes more complex, notice how you start getting more bugs when you
+	  mismanage data in your application.
+	  whenever you mismanage the data or state, as a result, you will be exposed to a lot of bugs
+          that is why redux is a good alternative to managing your application state.
+	- it is not necessary to build an application with redux, although it does make things a lot easier.
+	how redux is easier?
+	- redux gives us an organized way to store our data in store.
+	  all of your app's data is centralized in a single store.
+	  state in redux is read-only.
+	- all state changes in redux happen in a single place called root reducer.
+	- root reducer updates the state.
+	- easier to debug in redux code.
+- three principles of redux:
+	- redux having all the state in a single store, 
+	- whereas the state is readonly and can only 
+	- can only be updated through a pure function.
+	- directly can access child of child component.(advantage)
+if state in redux is read-only then how will we write on it?
+	- if a component needs to be update the state of the app, it can express the intent to do so.
+	  the only way that we are able to change the state that lives inside of our store is through pure
+	  functions called reducers.
+	  and that is the argument that we have to pass into our create store method.
+	- the argument will take in a bunch of reducers all combined into a single root reducer, which will define
+	  how data is going to be updated in our store.
+entire flow:
+ three important parts:
+	1.action
+	2.store
+	3.reducer.
+1.store:
+	where our application state lives.
+	all the data in our application lives inside of the store.
+- for the application of our application to change the state that's inside of our store.
+  the data for us to change it, the store needs to dispatch an action.
+- so to update the state, the store dispatches action and that action is passed to the reducer and 
+  the reducer then gives the store its updated state.
+- to install:
+	npm install redux@3.7.2
+		
+2.reducer:
+	- reducer will be incharge fo updating state.
+	- reducer is function here and we pass 2 arguments.
+		argument1: current state
+		argument2:action
+
+providers:
+  npm install react-redux@5.0.6
+	- this react-reduc gives us access to the provider
+	- in react to access or pass daata to directly to that child for this we use provider.
+	- provider efficeintly pass down the store to the most deeply nested components.
+	- it gives the component the ability to receive the store directly.
+	- provider serves only one purpose to provide our store to its child components.
+
+react devtools:
+	add in chrome extension for react.
+redux dev tools:
+	add this extension in chrome.
+	add the redux extension in store  in our code.
+
+npm install form-serialize

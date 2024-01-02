@@ -1,0 +1,38 @@
+Firebase:
+  - firebase is a real time database where we are going to save all of our data
+    that's inside our redux store.
+  - thatway whenever we add a post or remove a post, the state of our application
+    will persist inside of the database.
+  - that way, whenever we rerun the app, our data is the same as what it was before.
+    we don't lose it.
+  - it will fetch all from our database.
+
+Firebase Setup:
+1.signup and signin in firebase account.
+2.click on go to console.
+3.click Add Project and giveName 'Photowall'
+4.click create project.
+5.click on database and click get started
+6.firebase is a NoSQL non-relational database, which stores data as nodes.
+  each node is a key to a bunch of values.
+7.go inside your rules.
+	read:true
+	write:true(change it)
+8.go on project overview and add firebase to your web app.
+9.click copy the configuration
+10.we not going use this so install firebase like,
+		npm install firebase@4.8.2
+in project create config.js
+	her paste the config.
+11.create folder database and under this paste this file.
+ import firebase in config.js
+
+workflow:
+action creators -> method -> callback(update database) -> action
+
+first and foremost we cannot return methods from our action creators unless we use a module called thunk.
+to install thunk: npm install redux-thunk@2.2.0
+
+
+
+
